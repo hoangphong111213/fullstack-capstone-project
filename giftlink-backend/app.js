@@ -23,16 +23,17 @@ app.use(express.json());
 
 // Route files
 const giftRoutes = require('./routes/giftRoutes');
+const authRoutes = require('./routes/authRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 const pinoHttp = require('pino-http');
 const logger = require('./logger');
-const authRoutes = require('./routes/authRoutes');
+
 app.use(pinoHttp({ logger }));
 
 // Use Routes
 app.use('/api/gifts', giftRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/search', searchRoutes);
-app.use('/api/auth', authRoutes)
 
 // Global Error Handler
 app.use((err, req, res, next) => {
